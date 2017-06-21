@@ -1,7 +1,7 @@
 {
     "development": {
         "username": "root",
-        "password": "",
+        "password": "TimpfSQL81013##Torchwood",
         "database": "takoloko_db",
         "host": "localhost",
         "dialect": "mysql"
