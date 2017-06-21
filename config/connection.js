@@ -3,7 +3,7 @@ var Sequelize = require("sequelize");
 
 //create mySQL connection using Sequelize
 var sequelize = new Sequelize('takoloko_db', 'root', '', {
-    host: 'localhost',
+    host: 's54ham9zz83czkff.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
     dialect: 'mysql',
 
     pool: {
