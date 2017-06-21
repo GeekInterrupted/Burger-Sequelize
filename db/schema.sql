@@ -1,0 +1,11 @@
+CREATE database takos_db;
+
+USE takos_db;
+
+CREATE TABLE takos (
+    id INT NOT NULL AUTO_INCREMENT,
+    tako_name VARCHAR(255) NOT NULL,
+    devoured BOOLEAN,
+    date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    PRIMARY KEY(id)
+);

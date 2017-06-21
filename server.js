@@ -1,32 +1,39 @@
+//Dependencies
 var express = require("express");
 var bodyParser = require("body-parser");
 var methodOverride = require("method-override");
 
-// var db = require("./models");
-
+//set up express app
 var PORT = process.env.PORT || 3000;
-
 var app = express();
 
-app.use(express.static(process.cwd() + "/public"));
+//models for syncing
+var db = require("./models");
 
+//serve static content for the app from the public directory in the application directory
+app.use(express.static(process.cwd() + "/public"));
 app.use(bodyParser.urlencoded({ extended: false }));
 
+//override with POST having ?_method=DELETE
 app.use(methodOverride("_method"));
 
+//set handlebars
 var exphbs = require("express-handlebars");
 
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
-var router = require("./controllers/takos_controllers.js");
+// var router = require("./controllers/takos_controllers.js"); - replaced with api-routes
 
-app.use("/", router);
+//import routes to give the server access to them.
+require("./routes/html-routes.js")(app);
+require("./routes/api-routes.js")(app);
 
-//test if server is listening
+// app.use("/", router); - not neede anymore
 
-
-app.listen(PORT, function() {
+db.sequelize.sync().then(() => {
     console.log("App listening on PORT " + PORT);
+    app.listen(PORT);
+}).catch(error => {
+    console.log(error);
 });
-

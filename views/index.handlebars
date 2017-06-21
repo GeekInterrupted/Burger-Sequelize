@@ -20,32 +20,31 @@
           <h5 class="center">MY LOKO TAKOS</h5>
             <p class="light">
               <ul>
-                {{#each takos}}
-                  {{#unless this.devoured}}
-                    <li>
-                    {{this.id}}. {{this.tako_name}}
-                      
-                      {{!--<form class="create-update-form" action="/{{this.id}}?_method=PUT" method="POST">--}}
-                      <form class="create-update-form" action="/tako/eat/{{this.id}}" method="POST">
-                        <input type="hidden" name="devoured" value="true">
-                        
-                        <input placeholder="Tako Eater" type="text" id="customer_name" name="customer_name">
-                        <button class="btn waves-effect waves-light red" type="submit">Eat Me!</button>
-                      </form>
-
-                    </li>
-                  {{/unless}}
-                {{/each}}
-              </ul>
-            </p>
+          {{#each takos}}
+            {{#unless this.devoured}}
+                   <form action="/{{this.id}}?_method=PUT" method="POST">
+                      <div class="row">
+                        <div class="col">                  
+                          <li>{{this.tako_name}}</li>      
+                          {{> takos/customer}}         
+                        </div>
+                        <div class="col">
+                          <input type="hidden" name="devoured" value="true"> 
+                          <button type="submit button" id="eaten" class="btn waves-effect waves-light red">Eat Me!</button>          
+                        </div>
+                      </div>
+                    </form>
+            {{/unless}}
+          {{/each}}
+        </ul>       
+        </p>
         </div>
 
         <div class="col s12 m4">
           <div class="row">
             <h5 class="center">ADD A TAKO</h5>
-
-            
-                  <form class="create-update-form" action="/tako/create" method="POST">
+  
+                  <form class="create-update-form" action="/" method="POST">
 
                     <div class="form-group">
                       <label for="newTako">Tako Name:</label>
@@ -63,7 +62,8 @@
                     {{#each takos}}
                       {{#if this.devoured}}
                         <li>
-                        {{this.id}}. {{this.tako_name}}   
+                        {{this.id}}. {{this.tako_name}}  Eaten by {{this.customer}} 
+                        {{> takos/delete-tako}}
                         </li>
                       {{/if}}
                     {{/each}}
@@ -79,7 +79,7 @@
   
     <div class="footer-copyright">
       <div class="container">
-      Made by <a class="white-text text-lighten-3" href="https://github.com/GeekInterrupted/Burger-Sequelize">Olga O'Neal</a>
+      Made by <a class="white-text text-lighten-3" href="https://github.com/GeekInterrupted/MuchoLokoTakoTruck">Olga O'Neal</a>
       </div>
     </div>
   </footer>
