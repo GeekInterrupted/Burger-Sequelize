@@ -5,6 +5,14 @@ var db = require("../models");
 // =============================================================
 module.exports = function(app) {
 
+
+    app.get("/", function(req, res) {
+        db.Tako.findAll({})
+            .then(function(dbTako) {
+                res.render("index", dbTako);
+            });
+    });
+
     // POST route for saving a new tako
     app.post("/", function(req, res) {
 
