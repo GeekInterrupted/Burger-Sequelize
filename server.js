@@ -7,12 +7,16 @@ var methodOverride = require("method-override");
 var PORT = process.env.PORT || 3000;
 var app = express();
 
+server.listen(PORT, function() {
+    console.log("App is running on port " + PORT);
+});
+
 //models for syncing
 var db = require("./models");
 
 //serve static content for the app from the public directory in the application directory
-app.use(express.static(path.join(__dirname, 'public')));
-// app.use(express.static(__dirname + "/public"));
+
+app.use(express.static(__dirname + "/public"));
 
 
 app.use(bodyParser.urlencoded({ extended: false }));
