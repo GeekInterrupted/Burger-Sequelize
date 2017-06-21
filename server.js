@@ -11,9 +11,8 @@ var app = express();
 var db = require("./models");
 
 //serve static content for the app from the public directory in the application directory
-app.use(express.static(path.join(__dirname, 'public')));
-// app.use(express.static(__dirname + "/public"));
-// app.use(express.static(process.cwd() + "/"));
+app.use(express.static(__dirname + "/public"));
+
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -32,7 +31,7 @@ app.set("view engine", "handlebars");
 require("./routes/html-routes.js")(app);
 require("./routes/api-routes.js")(app);
 
-// app.use("/", router); - not neede anymore
+app.use("/", router);
 
 db.sequelize.sync().then(() => {
     console.log("App listening on PORT " + PORT);
