@@ -13,16 +13,7 @@ var sequelize = new Sequelize('takoloko_db', 'm3mljqs6i6omozbl', '', {
     },
 });
 
-//testing if the connection succeeds
-sequelize
-    .authenticate()
-    .then(() => {
-        console.log("We are good to go!");
 
-    })
-    .catch(err => {
-        console.error("Unable to connect to db: ", err);
-    });
 
 //exporting connection to be available for other files
 module.exports = sequelize;
