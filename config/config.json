@@ -1,7 +1,7 @@
 {
     "development": {
         "username": "root",
-        "password": "password",
+        "password": "",
         "database": "takoloko_db",
         "host": "localhost",
         "dialect": "mysql"
@@ -15,6 +15,6 @@
     },
     "production": {
         "use_env_variable": "mysql://m3mljqs6i6omozbl:wuc1jyhxtaoj8l9w@s54ham9zz83czkff.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/k72fzglw09rtw2ka",
-        "dialect": "sequelize"
+        "dialect": "mysql"
     }
 }
