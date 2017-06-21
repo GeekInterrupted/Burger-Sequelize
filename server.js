@@ -42,4 +42,8 @@ db.sequelize.sync({ force: true }).then(function() {
     app.listen(PORT, function() {
         console.log("listening on port %s", PORT);
     });
+<<<<<<< HEAD
 });
+=======
+});
+>>>>>>> 0ac7b10e5e2f75f3d4c33fcee1823161c1bf186f
