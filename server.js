@@ -7,10 +7,6 @@ var methodOverride = require("method-override");
 var PORT = process.env.PORT || 3000;
 var app = express();
 
-server.listen(PORT, function() {
-    console.log("App is running on port " + PORT);
-});
-
 //models for syncing
 var db = require("./models");
 
